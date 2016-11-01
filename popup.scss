@@ -1,8 +1,33 @@
 $primaryBlue: #26cdf9;
+$primaryWhite: #fff;
+$primaryBlack: #3c3c3c;
+$primaryYellow: #fff000;
 html,
 body {
     background: $primaryBlue;
     border: 5px $primaryBlue solid;
     border-radius: 5px;
+    color: $primaryWhite;
+    min-width: 275px;
 }
 
+h1{
+	margin-top: 0;
+	text-align: center;
+}
+label, input, textarea{
+	display: block;
+}
+label{
+	font-size: 120%;
+	margin-bottom: .75em;
+}
+
+button{
+	background: $primaryYellow;
+	border: 2px solid $primaryYellow;
+	border-radius: 5px;
+	color: $primaryBlack;
+	cursor: pointer;
+	margin-top: 1.5em;
+}

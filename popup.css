@@ -2,6 +2,27 @@ html,
 body {
   background: #26cdf9;
   border: 5px #26cdf9 solid;
-  border-radius: 5px; }
+  border-radius: 5px;
+  color: #fff;
+  min-width: 275px; }
+
+h1 {
+  margin-top: 0;
+  text-align: center; }
+
+label, input, textarea {
+  display: block; }
+
+label {
+  font-size: 120%;
+  margin-bottom: .75em; }
+
+button {
+  background: #fff000;
+  border: 2px solid #fff000;
+  border-radius: 5px;
+  color: #3c3c3c;
+  cursor: pointer;
+  margin-top: 1.5em; }
 
 /*# sourceMappingURL=popup.css.map */

@@ -4,9 +4,13 @@ document.getElementById('send').addEventListener('click', sendPriority);
 
 function sendPriority() {
 
-    var title = 'title=' + document.getElementById('priority').value;
+    var title = document.getElementById('priority').value;
+    var description = document.getElementById('description').value;
+    var dueDate = document.getElementById('dueDate').value.toString();
 
-    chrome.storage.sync.get('key', function(data) {
+    var priority = 'title=' + title + '&description=' + description + '&due=' + dueDate;
+
+    chrome.storage.sync.get('key', function(data) { 
 
         var APIkey = data.key;
 
@@ -17,14 +21,17 @@ function sendPriority() {
 
 
         request.addEventListener('load', function() {
-            // alert('it worked!');
+           document.getElementById('priority').value = '';
+           document.getElementById('description').value = '';
+           document.getElementById('dueDate').value = '';
         });
 
         request.addEventListener('error', function() {
-            // alert('nah');
+            alert('nah');
+            alert(request.responseText);
         });
 
-        request.send(title);
+        request.send(priority);
 
     });
 

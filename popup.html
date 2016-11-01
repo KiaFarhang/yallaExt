@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
+    <div id='logo'></div>
+    <h1>Add a Priority</h1>
     <label for="priority">Title:
-        <input type="text" id='priority' placeholder='Buy Milk'>
+        <input type="text" id='priority' placeholder='' size="28">
     </label>
-    
+    <label for="description">Description:
+        <textarea name="Decription" id="description" cols="30" rows="7" placeholder=''></textarea>
+    </label>
+    <label for="dueDate">Due:
+        <input type="date" id='dueDate'>
+    </label>
     <button id="send">Send</button>
     <script src="popup.js"></script>
 </body>
