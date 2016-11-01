@@ -1,8 +1,6 @@
 'use strict';
 
-var submissionForm = document.forms[0];
-
-submissionForm.addEventListener('submit', sendPriority);
+document.getElementById('send').addEventListener('click', sendPriority);
 
 function sendPriority() {
 
@@ -18,15 +16,17 @@ function sendPriority() {
         request.setRequestHeader('API_KEY', APIkey);
 
 
-        // request.addEventListener('load', function() {
-        //     alert('it worked!');
-        // });
+        request.addEventListener('load', function() {
+            // alert('it worked!');
+        });
 
-        // request.addEventListener('error', function() {
-        //     alert('nah');
-        // });
+        request.addEventListener('error', function() {
+            // alert('nah');
+        });
 
-        request.send();
+        request.send(title);
 
     });
+
+
 }
