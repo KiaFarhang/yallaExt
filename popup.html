@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="yalla.css">
 </head>
 
 <body>
     <div id='logo'></div>
     <h1>Add a Priority</h1>
     <label for="priority">Title:
+    <div id="titleCheck" class="error"></div>
         <input type="text" id='priority' placeholder='' size="28">
     </label>
     <label for="description">Description:
@@ -16,6 +17,11 @@
     </label>
     <label for="dueDate">Due:
         <input type="date" id='dueDate'>
+    </label>
+    <label for="user">
+    	<select name="user" id="userSelect">
+    		<option value="Me">Me</option>
+    	</select>
     </label>
     <button id="send">Send</button>
     <script src="popup.js"></script>
