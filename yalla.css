@@ -28,4 +28,7 @@ button {
 .error {
   color: red; }
 
+label#tasklabel {
+  margin-bottom: 0; }
+
 /*# sourceMappingURL=yalla.css.map */
