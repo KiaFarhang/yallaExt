@@ -13,7 +13,7 @@
         <input type="text" id='priority' placeholder='' size="28">
     </label>
     <label for="description">Description:
-        <textarea name="Decription" id="description" cols="30" rows="7" placeholder=''></textarea>
+        <textarea name="Decription" id="description" cols="30" rows="5" placeholder=''></textarea>
     </label>
     <label for="task1" id='tasklabel'>Tasks:
         <input type="text" id='task1' placeholder='' size='28'>
@@ -21,18 +21,21 @@
     <div id="taskBox">
     </div>
     <label for="dueDate">Due:
-        <input type="date" id='dueDate'>
+        <input type="text" id='dueDate'>
     </label>
-    <label for="user">For:
-        <select name="user" id="userSelect">
-            <option value="Me">Me</option>
-        </select>
-    </label>
-    <label for="client">Client:
-        <select name="client" id="clientSelect">
-            <option value="None">None</option>
-        </select>
-    </label>
+    <div class="selectContainer">
+        <label for="user">User:
+            <select name="user" id="userSelect">
+            </select>
+        </label>
+    </div>
+    <div class="selectContainer">
+        <label for="client">Client:
+            <select name="client" id="clientSelect">
+            <option value=""></option>
+            </select>
+        </label>
+    </div>
     <button id="send">Send</button>
     <script src="popup.js"></script>
 </body>
