@@ -45,9 +45,27 @@ button{
 	color: red;
 }
 
-label#tasklabel{
-	margin-bottom: 0;
+div.task {
+	// align-items: center;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+    label#tasklabel {
+        margin-bottom: 0;
+    }
+    label, input{
+    	flex-basis: 85%;
+    }
+    p{
+    	cursor: pointer;
+    	font-size: 150%;
+    	flex-basis: 7%;
+    	// margin-top: 0;
+    	// margin-bottom: 0;
+    }
 }
+
+
 div.selectContainer{
 	width: 100%;
 	select{

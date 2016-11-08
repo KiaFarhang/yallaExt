@@ -17,6 +17,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 // document.addEventListener('DOMContentLoaded', populateDropdowns);
 document.getElementById('send').addEventListener('click', sendPriority);
 document.getElementById('task1').addEventListener('keydown', addTaskInput);
+document.getElementById('taskTemplate').getElementsByTagName('p')[0].addEventListener('click', addTaskInput);
 // document.getElementById('test').addEventListener('keyup', showClients);
 $('#dueDate').datetimepicker();
 
@@ -100,7 +101,6 @@ function sendPriority() {
 
 
         request.addEventListener('load', function() {
-            // clearFields();
             document.location.reload();
         });
 
@@ -219,36 +219,49 @@ function populateDropdowns() {
 }
 
 
-function clearFields() {
-    document.getElementById('priority').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('dueDate').value = '';
-    document.getElementById('userSelect').selectedIndex = 0;
-    document.getElementById('clientSelect').selectedIndex = 0;
-    document.getElementById('task1').value = '';
+// function clearFields() {
+//     document.getElementById('priority').value = '';
+//     document.getElementById('description').value = '';
+//     document.getElementById('dueDate').value = '';
+//     document.getElementById('userSelect').selectedIndex = 0;
+//     document.getElementById('clientSelect').selectedIndex = 0;
+//     document.getElementById('task1').value = '';
 
-    var taskBox = document.getElementById('taskBox');
+//     var taskBox = document.getElementById('taskBox');
 
-    while (taskBox.firstChild) {
-        taskBox.removeChild(taskBox.firstChild);
-    }
+//     while (taskBox.firstChild) {
+//         taskBox.removeChild(taskBox.firstChild);
+//     }
 
 
-}
+// }
 
 function addTaskInput(event) {
-    if (event.which == 13 || event.keyCode == 13) {
+    if (event.which == 13 || event.keyCode == 13 || event.type == 'click') {
+
+        var div = document.getElementById('taskTemplate').cloneNode();
+        div.removeAttribute('id');
+
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.addEventListener('keydown', addTaskInput);
+
+        var plus = document.createElement('p');
+        plus.innerHTML = '&#43;';
+        plus.addEventListener('click', addTaskInput);
+        var minus = document.createElement('p');
+        minus.innerHTML = '&#45;';
+
+        div.appendChild(input);
+        div.appendChild(plus);
+        div.appendChild(minus);
+
+
+        document.getElementById('taskBox').appendChild(div);
+
+        input.focus();
 
         this.removeEventListener('keydown', addTaskInput);
-
-        var newTask = document.createElement('input');
-        newTask.setAttribute('type', 'text');
-        newTask.setAttribute('size', 28);
-
-        newTask.addEventListener('keydown', addTaskInput);
-
-        document.getElementById('taskBox').appendChild(newTask);
-        newTask.focus();
     }
 }
 

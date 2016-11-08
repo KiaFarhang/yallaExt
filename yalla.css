@@ -1037,8 +1037,18 @@ button {
 .error {
   color: red; }
 
-label#tasklabel {
-  margin-bottom: 0; }
+div.task {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; }
+  div.task label#tasklabel {
+    margin-bottom: 0; }
+  div.task label, div.task input {
+    flex-basis: 85%; }
+  div.task p {
+    cursor: pointer;
+    font-size: 150%;
+    flex-basis: 7%; }
 
 div.selectContainer {
   width: 100%; }
