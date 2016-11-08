@@ -18,6 +18,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 document.getElementById('send').addEventListener('click', sendPriority);
 document.getElementById('task1').addEventListener('keydown', addTaskInput);
 document.getElementById('taskTemplate').getElementsByTagName('p')[0].addEventListener('click', addTaskInput);
+document.getElementById('taskTemplate').getElementsByTagName('p')[1].addEventListener('click', removeTaskInput);
 // document.getElementById('test').addEventListener('keyup', showClients);
 $('#dueDate').datetimepicker();
 
@@ -101,11 +102,20 @@ function sendPriority() {
 
 
         request.addEventListener('load', function() {
-            document.location.reload();
+
+            document.getElementById('status').innerText = 'Priority sent!';
+            setTimeout(function(){
+               document.location.reload();
+            }, 1500);
+            
         });
 
         request.addEventListener('error', function() {
-            alert(request.responseText);
+            document.getElementById('status').classList.add('error');
+            document.getElementById('status').innerText = 'Error: Priority not sent.';
+            setTimeout(function(){
+                document.location.reload();
+            }, 1500);
         });
 
         request.send(priority);
@@ -145,97 +155,6 @@ function sendPriority() {
 
 }
 
-
-function populateDropdowns() {
-
-    chrome.storage.sync.get('key', function(data) {
-
-        var APIkey = data.key;
-
-        populateUsers();
-        populateClients();
-
-
-        function populateClients() {
-            var clientRequest = new XMLHttpRequest();
-            clientRequest.open('GET', 'https://www.yallahq.com/api/v1/client?');
-            clientRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            clientRequest.setRequestHeader('API_KEY', APIkey);
-
-            clientRequest.addEventListener('load', function() {
-                var clientObject = JSON.parse(clientRequest.responseText);
-
-                for (var i = 0; i < clientObject.length; i++) {
-                    var clientName = clientObject[i].name;
-                    var clientID = clientObject[i].id;
-
-                    var option = document.createElement('option');
-                    option.setAttribute('value', clientID);
-                    option.innerText = clientName;
-
-                    document.getElementById('clientSelect').appendChild(option);
-                }
-            });
-
-            clientRequest.addEventListener('error', function() {
-                alert(clientRequest.responseText);
-            });
-
-            clientRequest.send();
-        }
-
-        function populateUsers() {
-            var userRequest = new XMLHttpRequest();
-            userRequest.open('GET', 'https://www.yallahq.com/api/v1/user?');
-            userRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            userRequest.setRequestHeader('API_KEY', APIkey);
-
-            userRequest.addEventListener('load', function() {
-                var userObject = JSON.parse(userRequest.responseText);
-
-                for (var i = 0; i < userObject.length; i++) {
-                    var userName = userObject[i].name;
-                    var userID = userObject[i].user_id;
-
-                    var option = document.createElement('option');
-                    option.setAttribute('value', userID);
-                    option.innerText = userName;
-
-                    document.getElementById('userSelect').appendChild(option);
-                }
-            });
-
-            userRequest.addEventListener('error', function() {
-                alert(userRequest.responseText);
-            });
-
-            userRequest.send();
-        }
-
-
-
-    });
-
-}
-
-
-// function clearFields() {
-//     document.getElementById('priority').value = '';
-//     document.getElementById('description').value = '';
-//     document.getElementById('dueDate').value = '';
-//     document.getElementById('userSelect').selectedIndex = 0;
-//     document.getElementById('clientSelect').selectedIndex = 0;
-//     document.getElementById('task1').value = '';
-
-//     var taskBox = document.getElementById('taskBox');
-
-//     while (taskBox.firstChild) {
-//         taskBox.removeChild(taskBox.firstChild);
-//     }
-
-
-// }
-
 function addTaskInput(event) {
     if (event.which == 13 || event.keyCode == 13 || event.type == 'click') {
 
@@ -251,6 +170,7 @@ function addTaskInput(event) {
         plus.addEventListener('click', addTaskInput);
         var minus = document.createElement('p');
         minus.innerHTML = '&#45;';
+        minus.addEventListener('click', removeTaskInput);
 
         div.appendChild(input);
         div.appendChild(plus);
@@ -263,6 +183,13 @@ function addTaskInput(event) {
 
         this.removeEventListener('keydown', addTaskInput);
     }
+}
+
+function removeTaskInput(event){
+    var div = this.parentElement;
+
+    div.parentElement.removeChild(div);
+
 }
 
 //Add page=2, page=3 etc to get next 15 clients

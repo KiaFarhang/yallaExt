@@ -1055,6 +1055,20 @@ div.selectContainer {
   div.selectContainer select {
     width: 100%; }
 
+div#statusBox {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; }
+  div#statusBox button, div#statusBox p {
+    flex-basis: 50%; }
+  div#statusBox button {
+    min-height: 29px; }
+  div#statusBox p {
+    color: #fff000;
+    font-size: 135%;
+    font-weight: bold;
+    text-align: center; }
+
 .select2-close-mask, .select2-container--default .select2-selection--single, .select2-dropdown {
   background-color: #fff; }
 
