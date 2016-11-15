@@ -1007,6 +1007,8 @@
 html,
 body {
   background: #26cdf9;
+  background: url("background.jpg") no-repeat center center;
+  background-size: cover;
   border: 5px #26cdf9 solid;
   border-radius: 5px;
   color: #fff;
@@ -1049,6 +1051,15 @@ div.task {
     cursor: pointer;
     font-size: 150%;
     flex-basis: 7%; }
+
+div#taskBox div.task input {
+  height: 15px; }
+div#taskBox div.task p {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+label[for="dueDate"], input#dueDate {
+  width: 75%; }
 
 div.selectContainer {
   width: 100%; }
@@ -1726,8 +1737,14 @@ div#statusBox {
   left: -2px;
   top: -2px; }
 
-select {
-  background: black;
-  color: black; }
+span.select2-results {
+  color: #3c3c3c; }
+
+.select2-container--open .select2-dropdown {
+  left: 2px; }
+
+.img-circle {
+  border-radius: 100%;
+  vertical-align: middle; }
 
 /*# sourceMappingURL=yalla.css.map */

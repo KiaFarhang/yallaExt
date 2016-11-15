@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Yalla Options</title>
+    <meta charset="UTF-8">
+    <title>Yalla Options</title>
+    <style>
+    body {
+        font-size: 17px;
+        width: 750px;
+    }
+    
+    img {
+        display: block;
+        margin: 0 auto;
+        max-height: auto;
+        max-width: 100%;
+    }
+    
+    label{
+    	display: block;
+        margin: 1em 0;
+    }
+    </style>
 </head>
+
 <body>
-<p>Thanks for installing the Yalla extension! Please enter your API key.</p>
-	<label for="APIkey">API Key: <input type="text" id="APIkey"></label>
-	<div id="status"></div>
-	<button id="save">Save</button>
-	<script src="options.js"></script>
+    <p>Thanks for installing the Yalla extension! Please enter your API key. You can find it under "Me > Settings > Keys". Once you've saved your key, feel free to close this window and start using the extension.</p>
+    <img src='api_screenshot2.jpg' alt="API Key Location Screenshot">
+    <label for="APIkey">
+        <input type="text" id="APIkey" placeholder="API Key" size="45">
+    </label>
+    <div id="status"></div>
+    <button id="save">Save</button>
+    <script src="options.js"></script>
 </body>
+
 </html>

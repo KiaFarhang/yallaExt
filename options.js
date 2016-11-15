@@ -8,7 +8,10 @@ function saveAPIKey() {
 
     chrome.storage.sync.set(obj, function(){
         var status = document.getElementById('status');
-        status.textContent = 'Saved';
+        status.textContent = 'API Key saved!';
+        setTimeout(function(){
+        	status.textContent = '';
+        }, 2500);
     });
 }
 
