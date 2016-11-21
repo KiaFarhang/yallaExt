@@ -8,34 +8,39 @@
 <body>
     <div id='logo'></div>
     <h1>Add a Priority</h1>
-    <label for="priority">Title:
+    <label for="priority"><span class="label">Title</span>
         <div id="titleCheck" class="error"></div>
         <input type="text" id='priority' placeholder='' size="28">
     </label>
-    <label for="description">Description:
+    <label for="description"><span class="label">Description</span>
         <textarea name="Decription" id="description" cols="30" rows="5" placeholder=''></textarea>
     </label>
-    <div class="task" id="taskTemplate">
-        <label for="task1" id='tasklabel'>Tasks:
+    <div class="task" id="taskTemplate" style="display:none;">
+        <label for="task1" id='tasklabel'><span class="label">Tasks</span>
             <input type="text" id='task1' placeholder='' size='28'>
         </label>
         <p>&#43;</p>
         <p>&#45;</p>
     </div>
+    <div class="tasks">
+        <label for="taskCreate" id='tasklabel'><span class="label">Tasks</span>
+            <input type="text" class="task" id='taskCreate' placeholder='' size='28'>
+        </label>
+    </div>
     <div id="taskBox">
     </div>
-    <label for="dueDate">Due:
+    <label for="dueDate"><span class="label">Due</span>
         <input type="text" id='dueDate'>
     </label>
     <div class="selectContainer">
-        <label for="user">User:
+        <label for="user"><span class="label">User</span>
             <select name="user" id="userSelect">
                 <option value=""></option>
             </select>
         </label>
     </div>
     <div class="selectContainer">
-        <label for="client">Client:
+        <label for="client"><span class="label">Client</span>
             <select name="client" id="clientSelect">
                 <option value=""></option>
             </select>
@@ -46,6 +51,31 @@
         <p id="status"></p>
     </div>
     <script src="popup.js"></script>
+    
+    <script type="text/javascript">
+	$(function(){
+		$('#taskCreate').on('keypress',function(e){
+			if(e.which === 13){
+				var clone = $(e.target).clone(true);
+				clone.css({'margin-top' : 5}).removeAttr('id');
+				$(e.target).after(clone);
+				$(e.target).val('').focus();
+			}
+		});
+		
+		$('.task').on('keydown',function(e){
+			
+			if(e.which === 46 && $(e.target).attr('id') !== 'taskCreate'){
+				
+				if($(e.target).prev().hasClass('task')){
+					$(e.target).prev().focus()
+				}
+				$(e.target).remove();
+				
+			}
+		});
+	});
+	</script>
 </body>
 
 </html>
