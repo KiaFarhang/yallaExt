@@ -1,3 +1,107 @@
+@font-face {
+    font-family: 'montserratblack';
+    src: url('fonts/montserrat-black-webfont.eot');
+    src: url('fonts/montserrat-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-black-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-black-webfont.woff') format('woff'),
+         url('fonts/montserrat-black-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-black-webfont.svg#montserratblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratbold';
+    src: url('fonts/montserrat-bold-webfont.eot');
+    src: url('fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-bold-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-bold-webfont.woff') format('woff'),
+         url('fonts/montserrat-bold-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratextra_bold';
+    src: url('fonts/montserrat-extrabold-webfont.eot');
+    src: url('fonts/montserrat-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-extrabold-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-extrabold-webfont.woff') format('woff'),
+         url('fonts/montserrat-extrabold-webfont.ttf') format('ƒtruetype'),
+         url('fonts/montserrat-extrabold-webfont.svg#montserratextra_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserrathairline';
+    src: url('fonts/montserrat-hairline-webfont.eot');
+    src: url('fonts/montserrat-hairline-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-hairline-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-hairline-webfont.woff') format('woff'),
+         url('fonts/montserrat-hairline-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-hairline-webfont.svg#montserrathairline') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratlight';
+    src: url('fonts/montserrat-light-webfont.eot');
+    src: url('fonts/montserrat-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-light-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-light-webfont.woff') format('woff'),
+         url('fonts/montserrat-light-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-light-webfont.svg#montserratlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratregular';
+    src: url('fonts/montserrat-regular-webfont.eot');
+    src: url('fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-regular-webfont.woff') format('woff'),
+         url('fonts/montserrat-regular-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratsemi_bold';
+    src: url('fonts/montserrat-semibold-webfont.eot');
+    src: url('fonts/montserrat-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-semibold-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-semibold-webfont.woff') format('woff'),
+         url('fonts/montserrat-semibold-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-semibold-webfont.svg#montserratsemi_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montserratultra_light';
+    src: url('fonts/montserrat-ultralight-webfont.eot');
+    src: url('fonts/montserrat-ultralight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/montserrat-ultralight-webfont.woff2') format('woff2'),
+         url('fonts/montserrat-ultralight-webfont.woff') format('woff'),
+         url('fonts/montserrat-ultralight-webfont.ttf') format('truetype'),
+         url('fonts/montserrat-ultralight-webfont.svg#montserratultra_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
   background: #fff;
@@ -1009,12 +1113,16 @@ body {
   background: #26cdf9;
   background: url("background.jpg") no-repeat center center;
   background-size: cover;
-  border: 5px #26cdf9 solid;
+  /*border: 5px #26cdf9 solid;*/
   border-radius: 5px;
   color: #fff;
   min-width: 285px;
   min-height: 500px;
-  max-height: 2000px; }
+  max-height: 2000px;
+  font-family: "montserratlight"; }
+  
+body {
+  padding:20px; }
 
 h1 {
   margin-top: 0;
@@ -1024,42 +1132,82 @@ label, input, textarea {
   display: block;
   width: 100%; }
 
+input[type="text"] {
+  line-height:30px;
+  padding:0 10px;
+  border:none;
+  background: rgb(255, 255, 255) !important;	
+  background: rgba(255, 255, 255, 0.8) !important;	
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);	
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+   -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-khtml-border-radius: 5px;
+	outline:none;
+	box-sizing:border-box; }
+
+textarea {
+  padding:10px;
+  border:none;
+  background: rgb(255, 255, 255) !important;	
+  background: rgba(255, 255, 255, 0.8) !important;	
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);	
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+   -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-khtml-border-radius: 5px;
+	outline:none;
+	box-sizing:border-box; }
+
 label {
   font-size: 120%;
   margin-bottom: .75em; }
+  
+.label {
+  display:inline-block;
+  text-transform: uppercase;
+  font-size: .75em;
+  margin-bottom:7px; }
 
 button {
-  background: #fff000;
+  background: transparent;
   border: 2px solid #fff000;
   border-radius: 5px;
-  color: #3c3c3c;
+  color: #fff000;
   cursor: pointer;
-  margin-top: 1.5em; }
+  margin-top: 1.5em;
+  text-transform:uppercase;
+  font-size:16px;
+  line-height:24px;
+  padding:5px 10px;
+  box-sizing:border-box; }
 
 .error {
   color: red; }
 
 div.task {
-  display: flex;
+  /*display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between; }
+  justify-content: space-between;*/ }
   div.task label#tasklabel {
     margin-bottom: 0; }
   div.task label, div.task input {
-    flex-basis: 85%; }
+    /*flex-basis: 85%;*/ }
   div.task p {
     cursor: pointer;
     font-size: 150%;
     flex-basis: 7%; }
 
 div#taskBox div.task input {
-  height: 15px; }
+  height: 25px; }
 div#taskBox div.task p {
   margin-top: 0;
   margin-bottom: 0; }
 
 label[for="dueDate"], input#dueDate {
-  width: 75%; }
+  /*width: 75%;*/ }
 
 div.selectContainer {
   width: 100%; }
@@ -1071,9 +1219,9 @@ div#statusBox {
   flex-flow: row nowrap;
   justify-content: space-between; }
   div#statusBox button, div#statusBox p {
-    flex-basis: 50%; }
+    /*flex-basis: 50%;*/ }
   div#statusBox button {
-    min-height: 29px; }
+    min-height: 30px; }
   div#statusBox p {
     color: #fff000;
     font-size: 135%;
@@ -1567,8 +1715,9 @@ div#statusBox {
   margin: 0;
   position: relative;
   vertical-align: middle;
-  border: 2px solid #eee;
-  border-radius: 2px; }
+  /*border: 2px solid #eee;*/
+  border-radius: 5px;
+  background:none; }
 
 #settings-modal .select2-container {
   width: 100% !important; }
@@ -1741,10 +1890,22 @@ span.select2-results {
   color: #3c3c3c; }
 
 .select2-container--open .select2-dropdown {
-  left: 2px; }
+  left: 0; }
 
 .img-circle {
   border-radius: 100%;
   vertical-align: middle; }
+  
+.select2-selection.select2-selection--single {
+  background: rgb(255, 255, 255) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+   -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-khtml-border-radius: 5px;
+	line-height:30px;
+	font-size:14px; }
 
 /*# sourceMappingURL=yalla.css.map */
