@@ -14,12 +14,30 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
 'use strict';
 
-// document.addEventListener('DOMContentLoaded', populateDropdowns);
+	$(function(){
+		$('#taskCreate').on('keypress',function(e){
+			if(e.which === 13){
+				var clone = $(e.target).clone(true);
+				clone.css({'margin-top' : 5}).removeAttr('id');
+				$(e.target).after(clone);
+				$(e.target).val('').focus();
+			}
+		});
+		
+		$('.task').on('keydown',function(e){
+			
+			if(e.which === 46 && $(e.target).attr('id') !== 'taskCreate'){
+				
+				if($(e.target).prev().hasClass('task')){
+					$(e.target).prev().focus()
+				}
+				$(e.target).remove();
+				
+			}
+		});
+	});
+
 document.getElementById('send').addEventListener('click', sendPriority);
-document.getElementById('task1').addEventListener('keydown', addTaskInput);
-document.getElementById('taskTemplate').getElementsByTagName('p')[0].addEventListener('click', addTaskInput);
-document.getElementById('taskTemplate').getElementsByTagName('p')[1].addEventListener('click', removeTaskInput);
-// document.getElementById('test').addEventListener('keyup', showClients);
 $('#dueDate').datetimepicker();
 
 $('#clientSelect').select2({
@@ -84,10 +102,7 @@ function sendPriority() {
     if (document.getElementById('clientSelect').value != 'None') {
         client_id = document.getElementById('clientSelect').value;
     }
-
-    if (document.getElementById('task1').value != '') {
         tasks = collectTasks();
-    }
 
     var priority = 'title=' + title + '&description=' + description + '&due=' + dueDate + '&user_id=' + user_id + '&client_id=' + client_id + '&tasks=' + tasks;
 
@@ -103,7 +118,7 @@ function sendPriority() {
 
         request.addEventListener('load', function() {
 
-            document.getElementById('status').innerText = 'Priority sent!';
+            document.getElementById('send').innerText = 'Priority sent!';
             setTimeout(function(){
                document.location.reload();
             }, 1500);
@@ -111,8 +126,8 @@ function sendPriority() {
         });
 
         request.addEventListener('error', function() {
-            document.getElementById('status').classList.add('error');
-            document.getElementById('status').innerText = 'Error: Priority not sent.';
+            document.getElementById('send').classList.add('error');
+            document.getElementById('send').innerText = 'Error';
             setTimeout(function(){
                 document.location.reload();
             }, 1500);
@@ -136,10 +151,7 @@ function sendPriority() {
     function collectTasks() {
         var string = '';
 
-        string += document.getElementById('task1').value;
-        string += ',';
-
-        var tasks = document.getElementById('taskBox').getElementsByTagName('input');
+        var tasks = document.getElementsByClassName('task');
 
         for (var i = 0; i < tasks.length; i++) {
             if (tasks[i].value != '') {
@@ -155,42 +167,40 @@ function sendPriority() {
 
 }
 
-function addTaskInput(event) {
-    if (event.which == 13 || event.keyCode == 13 || event.type == 'click') {
+// function addTaskInput(event) {
+//     if (event.which == 13 || event.keyCode == 13 || event.type == 'click') {
 
-        var div = document.getElementById('taskTemplate').cloneNode();
-        div.removeAttribute('id');
+//         var div = document.getElementById('taskTemplate').cloneNode();
+//         div.removeAttribute('id');
 
-        var input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.addEventListener('keydown', addTaskInput);
+//         var input = document.createElement('input');
+//         input.setAttribute('type', 'text');
+//         input.addEventListener('keydown', addTaskInput);
 
-        var plus = document.createElement('p');
-        plus.innerHTML = '&#43;';
-        plus.addEventListener('click', addTaskInput);
-        var minus = document.createElement('p');
-        minus.innerHTML = '&#45;';
-        minus.addEventListener('click', removeTaskInput);
+//         var plus = document.createElement('p');
+//         plus.innerHTML = '&#43;';
+//         plus.addEventListener('click', addTaskInput);
+//         var minus = document.createElement('p');
+//         minus.innerHTML = '&#45;';
+//         minus.addEventListener('click', removeTaskInput);
 
-        div.appendChild(input);
-        div.appendChild(plus);
-        div.appendChild(minus);
+//         div.appendChild(input);
+//         div.appendChild(plus);
+//         div.appendChild(minus);
 
 
-        document.getElementById('taskBox').appendChild(div);
+//         document.getElementById('taskBox').appendChild(div);
 
-        input.focus();
+//         input.focus();
 
-        this.removeEventListener('keydown', addTaskInput);
-    }
-}
+//         this.removeEventListener('keydown', addTaskInput);
+//     }
+// }
 
-function removeTaskInput(event){
-    var div = this.parentElement;
+// function removeTaskInput(event){
+//     var div = this.parentElement;
 
-    div.parentElement.removeChild(div);
+//     div.parentElement.removeChild(div);
 
-}
-
-//Add page=2, page=3 etc to get next 15 clients
+// }
 
